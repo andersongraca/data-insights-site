@@ -3,7 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
 
-const Navbar = () => {
+interface NavbarProps {
+  onNavigateToSaaS?: () => void;
+}
+
+const Navbar = ({ onNavigateToSaaS }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
@@ -74,7 +78,14 @@ const Navbar = () => {
                 {solutions.map((solution) => (
                   <button
                     key={solution.id}
-                    onClick={() => scrollToSection('services')}
+                    onClick={() => {
+                      if (solution.id === 'saas' && onNavigateToSaaS) {
+                        onNavigateToSaaS();
+                      } else {
+                        scrollToSection('services');
+                      }
+                      setIsSolutionsOpen(false);
+                    }}
                     className="w-full px-4 py-3 text-left text-gray-700 hover:bg-green-50 hover:text-green-600 font-medium transition-colors border-b border-gray-100 last:border-b-0"
                   >
                     {solution.label}
@@ -158,7 +169,15 @@ const Navbar = () => {
                     {solutions.map((solution) => (
                       <button
                         key={solution.id}
-                        onClick={() => scrollToSection('services')}
+                        onClick={() => {
+                          if (solution.id === 'saas' && onNavigateToSaaS) {
+                            onNavigateToSaaS();
+                          } else {
+                            scrollToSection('services');
+                          }
+                          setIsOpen(false);
+                          setIsSolutionsOpen(false);
+                        }}
                         className="w-full text-gray-600 hover:text-green-600 font-medium text-left py-2"
                       >
                         {solution.label}
