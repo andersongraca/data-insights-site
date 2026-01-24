@@ -1,41 +1,28 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-
-
-function Router() {
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+import './App.css';
+import './i18n';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import ServicesSection from './components/ServicesSection';
+import AboutSection from './components/AboutSection';
+import BenefitsSection from './components/BenefitsSection';
+import SolutionsSection from './components/SolutionsSection';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
+import FloatingChat from './components/FloatingChat';
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <div className="min-h-screen">
+      <Navbar />
+      <HeroSection />
+      <ServicesSection />
+      <SolutionsSection />
+      <AboutSection />
+      <BenefitsSection />
+      <ContactSection />
+      <Footer />
+      <FloatingChat />
+    </div>
   );
 }
 
