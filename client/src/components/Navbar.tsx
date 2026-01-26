@@ -5,9 +5,10 @@ import logo from '../assets/logo-Photoroom.png';
 
 interface NavbarProps {
   onNavigateToSaaS?: () => void;
+  onNavigateToTeam?: () => void;
 }
 
-const Navbar = ({ onNavigateToSaaS }: NavbarProps) => {
+const Navbar = ({ onNavigateToSaaS, onNavigateToTeam }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
@@ -50,10 +51,16 @@ const Navbar = ({ onNavigateToSaaS }: NavbarProps) => {
               {t('nav.home')}
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => {
+                if (onNavigateToTeam) {
+                  onNavigateToTeam();
+                } else {
+                  scrollToSection('about');
+                }
+              }}
               className="text-gray-700 hover:text-green-600 font-medium transition-colors"
             >
-              {t('nav.about')}
+              Nosso Time
             </button>
 
             {/* Solutions Dropdown */}
@@ -148,10 +155,17 @@ const Navbar = ({ onNavigateToSaaS }: NavbarProps) => {
                 {t('nav.home')}
               </button>
               <button
-                onClick={() => scrollToSection('about')}
+                onClick={() => {
+                  if (onNavigateToTeam) {
+                    onNavigateToTeam();
+                    setIsOpen(false);
+                  } else {
+                    scrollToSection('about');
+                  }
+                }}
                 className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2"
               >
-                {t('nav.about')}
+                Nosso Time
               </button>
 
               {/* Mobile Solutions Dropdown */}

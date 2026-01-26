@@ -143,9 +143,16 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Copyright */}
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>{t('footer.copyright')}</p>
+          {/* Copyright and Legal Links */}
+          <div className="border-t border-gray-800 pt-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <p className="text-gray-400">{t('footer.copyright')}</p>
+              <div className="flex items-center gap-6 text-gray-400 text-sm">
+                <a href="#privacy" className="hover:text-green-400 transition-colors">Política de Privacidade</a>
+                <span className="text-gray-600">|</span>
+                <a href="#terms" className="hover:text-green-400 transition-colors">Termos & Condições</a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

@@ -11,10 +11,11 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import FloatingChat from './components/FloatingChat';
 import SaaSSolutions from './pages/SaaSSolutions';
-import ModernShowcaseSection from './components/ModernShowcaseSection';
+import PlatformOverviewSection from './components/PlatformOverviewSection';
+import OurTeam from './pages/OurTeam';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'saas'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team'>('home');
 
   if (currentPage === 'saas') {
     return (
@@ -24,13 +25,21 @@ function App() {
     );
   }
 
+  if (currentPage === 'team') {
+    return (
+      <div className="min-h-screen">
+        <OurTeam onBack={() => setCurrentPage('home')} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
-      <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} />
+      <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} />
       <HeroSection />
       <ServicesSection />
       <SolutionsSection />
-      <ModernShowcaseSection />
+      <PlatformOverviewSection />
       <BenefitsSection />
       <ContactSection />
       <Footer />
