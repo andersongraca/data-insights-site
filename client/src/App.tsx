@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 
-import BenefitsSection from './components/BenefitsSection';
+
 import SolutionsSection from './components/SolutionsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -40,7 +40,6 @@ function App() {
       <ServicesSection />
       <SolutionsSection />
       <PlatformOverviewSection />
-      <BenefitsSection />
       <ContactSection />
       <Footer />
       <FloatingChat />

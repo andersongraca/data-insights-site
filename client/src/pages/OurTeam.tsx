@@ -136,6 +136,46 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
             ))}
           </div>
 
+          {/* Expertise Section */}
+          <div className="mt-20 mb-20">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              Especialização em que Pode Confiar
+            </h3>
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                {
+                  icon: '🎯',
+                  title: 'Expertise Comprovada',
+                  description: 'Mais de 15 anos transformando dados em decisões estratégicas'
+                },
+                {
+                  icon: '💡',
+                  title: 'Inovação Contínua',
+                  description: 'Sempre à frente das tendências em IA e Data Science'
+                },
+                {
+                  icon: '📈',
+                  title: 'Resultados Mensuráveis',
+                  description: 'ROI comprovado em 90 dias para nossos clientes'
+                },
+                {
+                  icon: '🎧',
+                  title: 'Suporte 24/7',
+                  description: 'Equipe dedicada sempre pronta para ajudar'
+                }
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center border border-gray-100 hover:border-green-200 group"
+                >
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
+                  <h4 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h4>
+                  <p className="text-gray-600">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Stats Section */}
           <div className="grid md:grid-cols-3 gap-8 mt-20">
             {[
