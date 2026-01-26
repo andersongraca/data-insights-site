@@ -4,13 +4,14 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
-import AboutSection from './components/AboutSection';
+
 import BenefitsSection from './components/BenefitsSection';
 import SolutionsSection from './components/SolutionsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import FloatingChat from './components/FloatingChat';
 import SaaSSolutions from './pages/SaaSSolutions';
+import ModernShowcaseSection from './components/ModernShowcaseSection';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'saas'>('home');
@@ -29,7 +30,7 @@ function App() {
       <HeroSection />
       <ServicesSection />
       <SolutionsSection />
-      <AboutSection />
+      <ModernShowcaseSection />
       <BenefitsSection />
       <ContactSection />
       <Footer />
