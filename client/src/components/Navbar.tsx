@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
+import SolutionsDropdownModal from './SolutionsDropdownModal';
 
 interface NavbarProps {
   onNavigateToSaaS?: () => void;
@@ -13,6 +14,7 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
+  const [isSolutionsModalOpen, setIsSolutionsModalOpen] = useState(false);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'pt' : 'en';
@@ -70,9 +72,7 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
                 onMouseEnter={() => setIsSolutionsOpen(true)}
                 onMouseLeave={() => setIsSolutionsOpen(false)}
                 onClick={() => {
-                  if (onNavigateToSolutions) {
-                    onNavigateToSolutions();
-                  }
+                  setIsSolutionsModalOpen(true);
                 }}
                 className="text-gray-700 hover:text-green-600 font-medium transition-colors flex items-center gap-1"
               >
@@ -80,31 +80,7 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
                 <ChevronDown className={`h-4 w-4 transition-transform ${isSolutionsOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Dropdown Menu */}
-              <div
-                onMouseEnter={() => setIsSolutionsOpen(true)}
-                onMouseLeave={() => setIsSolutionsOpen(false)}
-                className={`absolute left-0 mt-0 w-56 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 ${
-                  isSolutionsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                }`}
-              >
-                {solutions.map((solution) => (
-                  <button
-                    key={solution.id}
-                    onClick={() => {
-                      if (solution.id === 'saas' && onNavigateToSaaS) {
-                        onNavigateToSaaS();
-                      } else {
-                        scrollToSection('services');
-                      }
-                      setIsSolutionsOpen(false);
-                    }}
-                    className="w-full px-4 py-3 text-left text-gray-700 hover:bg-green-50 hover:text-green-600 font-medium transition-colors border-b border-gray-100 last:border-b-0"
-                  >
-                    {solution.label}
-                  </button>
-                ))}
-              </div>
+
             </div>
 
             <button
@@ -178,40 +154,14 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
               <div className="px-2">
                 <button
                   onClick={() => {
-                    if (onNavigateToSolutions) {
-                      onNavigateToSolutions();
-                      setIsOpen(false);
-                    } else {
-                      setIsSolutionsOpen(!isSolutionsOpen);
-                    }
+                    setIsSolutionsModalOpen(true);
+                    setIsOpen(false);
                   }}
                   className="w-full text-gray-700 hover:text-green-600 font-medium text-left py-2 flex items-center justify-between"
                 >
                   {t('nav.solutions')}
-                  <ChevronDown className={`h-4 w-4 transition-transform ${isSolutionsOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-4 w-4 transition-transform`} />
                 </button>
-
-                {isSolutionsOpen && (
-                  <div className="pl-4 space-y-2 mt-2 border-l-2 border-green-600">
-                    {solutions.map((solution) => (
-                      <button
-                        key={solution.id}
-                        onClick={() => {
-                          if (solution.id === 'saas' && onNavigateToSaaS) {
-                            onNavigateToSaaS();
-                          } else {
-                            scrollToSection('services');
-                          }
-                          setIsOpen(false);
-                          setIsSolutionsOpen(false);
-                        }}
-                        className="w-full text-gray-600 hover:text-green-600 font-medium text-left py-2"
-                      >
-                        {solution.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
               </div>
 
               <button
@@ -230,6 +180,7 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
           </div>
         )}
       </div>
+      <SolutionsDropdownModal isOpen={isSolutionsModalOpen} onClose={() => setIsSolutionsModalOpen(false)} />
     </nav>
   );
 };

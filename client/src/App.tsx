@@ -13,10 +13,10 @@ import FloatingChat from './components/FloatingChat';
 import SaaSSolutions from './pages/SaaSSolutions';
 import PlatformOverviewSection from './components/PlatformOverviewSection';
 import OurTeam from './pages/OurTeam';
-import ExpandedSolutions from './pages/ExpandedSolutions';
+
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'solutions'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team'>('home');
 
   if (currentPage === 'saas') {
     return (
@@ -34,17 +34,9 @@ function App() {
     );
   }
 
-  if (currentPage === 'solutions') {
-    return (
-      <div className="min-h-screen">
-        <ExpandedSolutions onBack={() => setCurrentPage('home')} />
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen">
-      <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToSolutions={() => setCurrentPage('solutions')} />
+      <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} />
       <HeroSection />
       <ServicesSection />
       <SolutionsSection />
