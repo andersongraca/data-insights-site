@@ -6,9 +6,10 @@ import logo from '../assets/logo-Photoroom.png';
 interface NavbarProps {
   onNavigateToSaaS?: () => void;
   onNavigateToTeam?: () => void;
+  onNavigateToSolutions?: () => void;
 }
 
-const Navbar = ({ onNavigateToSaaS, onNavigateToTeam }: NavbarProps) => {
+const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
@@ -68,6 +69,11 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam }: NavbarProps) => {
               <button
                 onMouseEnter={() => setIsSolutionsOpen(true)}
                 onMouseLeave={() => setIsSolutionsOpen(false)}
+                onClick={() => {
+                  if (onNavigateToSolutions) {
+                    onNavigateToSolutions();
+                  }
+                }}
                 className="text-gray-700 hover:text-green-600 font-medium transition-colors flex items-center gap-1"
               >
                 {t('nav.solutions')}
@@ -171,7 +177,14 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam }: NavbarProps) => {
               {/* Mobile Solutions Dropdown */}
               <div className="px-2">
                 <button
-                  onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
+                  onClick={() => {
+                    if (onNavigateToSolutions) {
+                      onNavigateToSolutions();
+                      setIsOpen(false);
+                    } else {
+                      setIsSolutionsOpen(!isSolutionsOpen);
+                    }
+                  }}
                   className="w-full text-gray-700 hover:text-green-600 font-medium text-left py-2 flex items-center justify-between"
                 >
                   {t('nav.solutions')}
