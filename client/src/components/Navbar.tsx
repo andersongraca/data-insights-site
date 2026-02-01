@@ -13,7 +13,6 @@ interface NavbarProps {
 const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const [isSolutionsModalOpen, setIsSolutionsModalOpen] = useState(false);
 
   const toggleLanguage = () => {
@@ -26,7 +25,6 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
-      setIsSolutionsOpen(false);
     }
   };
 
@@ -69,15 +67,13 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
             {/* Solutions Dropdown */}
             <div className="relative group">
               <button
-                onMouseEnter={() => setIsSolutionsOpen(true)}
-                onMouseLeave={() => setIsSolutionsOpen(false)}
                 onClick={() => {
                   setIsSolutionsModalOpen(true);
                 }}
                 className="text-gray-700 hover:text-green-600 font-medium transition-colors flex items-center gap-1"
               >
                 {t('nav.solutions')}
-                <ChevronDown className={`h-4 w-4 transition-transform ${isSolutionsOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-4 w-4 transition-transform`} />
               </button>
 
 
