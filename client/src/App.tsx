@@ -7,6 +7,7 @@ import ServicesSection from './components/ServicesSection';
 
 
 import SolutionsSection from './components/SolutionsSection';
+import ResourcesSection from './components/ResourcesSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import FloatingChat from './components/FloatingChat';
@@ -41,6 +42,7 @@ function App() {
       <ServicesSection />
       <SolutionsSection />
       <PlatformOverviewSection />
+      <ResourcesSection />
       <ContactSection />
       <Footer />
       <FloatingChat />

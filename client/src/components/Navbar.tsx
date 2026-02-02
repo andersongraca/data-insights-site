@@ -52,16 +52,10 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
               {t('nav.home')}
             </button>
             <button
-              onClick={() => {
-                if (onNavigateToTeam) {
-                  onNavigateToTeam();
-                } else {
-                  scrollToSection('about');
-                }
-              }}
+              onClick={() => scrollToSection('resources')}
               className="text-gray-700 hover:text-green-600 font-medium transition-colors"
             >
-              Nosso Time
+              Recursos
             </button>
 
             {/* Solutions Dropdown */}
@@ -134,16 +128,12 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
               </button>
               <button
                 onClick={() => {
-                  if (onNavigateToTeam) {
-                    onNavigateToTeam();
-                    setIsOpen(false);
-                  } else {
-                    scrollToSection('about');
-                  }
+                  scrollToSection('resources');
+                  setIsOpen(false);
                 }}
                 className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2"
               >
-                Nosso Time
+                Recursos
               </button>
 
               {/* Mobile Solutions Dropdown */}
