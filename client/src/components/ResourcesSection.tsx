@@ -36,7 +36,7 @@ const ResourcesSection = () => {
     {
       id: 5,
       title: 'Webinars & Eventos',
-      description: 'Participe de webinars ao vivo e eventos exclusivos com especialistas',
+      description: 'Eventos exclusivos com especialistas',
       icon: <Zap className="h-8 w-8" />,
       color: 'from-red-500 to-red-600'
     },
