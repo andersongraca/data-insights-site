@@ -127,7 +127,7 @@ export default function SolutionsDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-screen max-w-6xl bg-background border border-border rounded-lg shadow-lg z-50 p-6">
+        <div className="absolute top-full left-0 mt-2 w-screen max-w-5xl bg-background border border-border rounded-lg shadow-lg z-50 p-6 -translate-x-1/4">
           {/* Tabs */}
           <div className="flex gap-4 mb-6 border-b border-border pb-4">
             <button
