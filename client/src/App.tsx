@@ -3,7 +3,7 @@ import './i18n';
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
+import StrategicLeadersSection from './components/StrategicLeadersSection';
 
 
 import SolutionsSection from './components/SolutionsSection';
@@ -39,7 +39,7 @@ function App() {
     <div className="min-h-screen">
       <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} />
       <HeroSection />
-      <ServicesSection />
+      <StrategicLeadersSection />
       <SolutionsSection />
       <PlatformOverviewSection />
       <ResourcesSection />

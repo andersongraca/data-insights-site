@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
-import SolutionsDropdownModal from './SolutionsDropdownModal';
+import SolutionsDropdown from './SolutionsDropdown';
 
 interface NavbarProps {
   onNavigateToSaaS?: () => void;
@@ -13,7 +13,7 @@ interface NavbarProps {
 const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [isSolutionsModalOpen, setIsSolutionsModalOpen] = useState(false);
+
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'pt' : 'en';
@@ -59,19 +59,7 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
             </button>
 
             {/* Solutions Dropdown */}
-            <div className="relative group">
-              <button
-                onClick={() => {
-                  setIsSolutionsModalOpen(true);
-                }}
-                className="text-gray-700 hover:text-green-600 font-medium transition-colors flex items-center gap-1"
-              >
-                {t('nav.solutions')}
-                <ChevronDown className={`h-4 w-4 transition-transform`} />
-              </button>
-
-
-            </div>
+            <SolutionsDropdown />
 
             <button
               onClick={() => scrollToSection('contact')}
@@ -138,16 +126,9 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
 
               {/* Mobile Solutions Dropdown */}
               <div className="px-2">
-                <button
-                  onClick={() => {
-                    setIsSolutionsModalOpen(true);
-                    setIsOpen(false);
-                  }}
-                  className="w-full text-gray-700 hover:text-green-600 font-medium text-left py-2 flex items-center justify-between"
-                >
-                  {t('nav.solutions')}
-                  <ChevronDown className={`h-4 w-4 transition-transform`} />
-                </button>
+                <div onClick={() => setIsOpen(false)}>
+                  <SolutionsDropdown />
+                </div>
               </div>
 
               <button
@@ -166,7 +147,7 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
           </div>
         )}
       </div>
-      <SolutionsDropdownModal isOpen={isSolutionsModalOpen} onClose={() => setIsSolutionsModalOpen(false)} />
+
     </nav>
   );
 };
