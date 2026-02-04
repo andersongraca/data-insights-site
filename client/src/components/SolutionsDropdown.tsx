@@ -6,7 +6,7 @@ interface Solution {
   title: string;
   description: string;
   icon: React.ReactNode;
-  category: 'use-case' | 'role';
+  category: 'use-case' | 'role' | 'team';
 }
 
 const solutions: Solution[] = [
@@ -52,6 +52,14 @@ const solutions: Solution[] = [
     description: 'Análise preditiva com inteligência artificial',
     icon: <Brain className="w-6 h-6" />,
     category: 'use-case',
+  },
+  // TEAM
+  {
+    id: 'our-team',
+    title: 'Nosso Time',
+    description: 'Conheça os especialistas que transformam dados em resultados',
+    icon: <Users className="w-6 h-6" />,
+    category: 'team',
   },
   // ROLES
   {
@@ -100,7 +108,7 @@ const solutions: Solution[] = [
 
 export default function SolutionsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'use-case' | 'role'>('use-case');
+  const [activeTab, setActiveTab] = useState<'use-case' | 'role' | 'team'>('use-case');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -149,6 +157,16 @@ export default function SolutionsDropdown() {
               }`}
             >
               BY ROLE
+            </button>
+            <button
+              onClick={() => setActiveTab('team')}
+              className={`px-4 py-2 font-medium transition-colors ${
+                activeTab === 'team'
+                  ? 'text-primary border-b-2 border-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              NOSSO TIME
             </button>
           </div>
 

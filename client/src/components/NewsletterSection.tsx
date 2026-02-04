@@ -45,7 +45,7 @@ const NewsletterSection = () => {
 
           {/* Center - Newsletter Form */}
           <div className="flex-1 flex flex-col items-center">
-            <h3 className="text-lg font-semibold mb-4 text-center">Join our newsletter</h3>
+            <h3 className="text-lg font-semibold mb-4 text-center">Junte-se à nossa newsletter</h3>
             <form onSubmit={handleSubmit} className="w-full max-w-md flex gap-2">
               <div className="flex-1 relative">
                 <input
@@ -53,7 +53,7 @@ const NewsletterSection = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Enter your email*"
+                  placeholder="Digite seu email*"
                   className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
               </div>
@@ -62,14 +62,14 @@ const NewsletterSection = () => {
                 className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap"
               >
                 <Mail className="h-4 w-4" />
-                Subscribe
+                Inscrever
               </button>
             </form>
             {status === 'success' && (
-              <p className="text-green-400 text-sm mt-2">Thanks for subscribing!</p>
+              <p className="text-green-400 text-sm mt-2">Obrigado por se inscrever!</p>
             )}
             {status === 'error' && (
-              <p className="text-red-400 text-sm mt-2">Please enter a valid email</p>
+              <p className="text-red-400 text-sm mt-2">Por favor, digite um email válido</p>
             )}
           </div>
 

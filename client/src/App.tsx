@@ -44,8 +44,8 @@ function App() {
       <SolutionsSection />
       <PlatformOverviewSection />
       <ResourcesSection />
-      <NewsletterSection />
       <ContactSection />
+      <NewsletterSection />
       <Footer />
       <FloatingChat />
     </div>
