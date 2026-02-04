@@ -54,7 +54,7 @@ const SolutionsSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             {t('solutions.title')}
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Explore nossas soluções em detalhes e descubra como podemos ajudar seu negócio
           </p>
         </div>
@@ -76,10 +76,6 @@ const SolutionsSection = () => {
                   {solution.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  {solution.description}
-                </p>
-
                 <button
                   onClick={() => setSelectedSolution(solution.id)}
                   className={`inline-flex items-center justify-center px-6 py-2 rounded-lg font-medium transition-all ${solution.color} hover:bg-opacity-10 border-2 ${solution.color.replace('text-', 'border-')}`}

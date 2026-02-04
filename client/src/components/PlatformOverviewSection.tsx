@@ -119,7 +119,7 @@ const PlatformOverviewSection = () => {
                   <Icon className={`h-12 w-12 mb-6 transition-all duration-300 ${
                     isActive 
                       ? `text-transparent bg-clip-text bg-gradient-to-br ${phase.color}` 
-                      : 'text-gray-400 group-hover:text-gray-600'
+                      : 'text-gray-600 group-hover:text-gray-700'
                   }`} />
 
                   {/* Title */}

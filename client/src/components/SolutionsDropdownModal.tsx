@@ -15,7 +15,7 @@ interface SolutionsDropdownModalProps {
 }
 
 const SolutionsDropdownModal = ({ isOpen, onClose }: SolutionsDropdownModalProps) => {
-  const [activeTab, setActiveTab] = useState<'usecases' | 'roles'>('usecases');
+  const [activeTab, setActiveTab] = useState<'usecases' | 'roles' | 'team'>('usecases');
 
   const useCases: Solution[] = [
     {
@@ -107,7 +107,17 @@ const SolutionsDropdownModal = ({ isOpen, onClose }: SolutionsDropdownModalProps
     }
   ];
 
-  const solutions = activeTab === 'usecases' ? useCases : roles;
+  const team: Solution[] = [
+    {
+      id: 'our-team',
+      title: 'Nosso Time',
+      description: 'Conheça os especialistas que transformam dados em resultados',
+      icon: <Brain className="h-6 w-6" />,
+      color: 'from-blue-500 to-blue-600'
+    }
+  ];
+
+  const solutions = activeTab === 'usecases' ? useCases : activeTab === 'roles' ? roles : team;
 
   if (!isOpen) return null;
 
@@ -154,6 +164,16 @@ const SolutionsDropdownModal = ({ isOpen, onClose }: SolutionsDropdownModalProps
               }`}
             >
               ROLE
+            </button>
+            <button
+              onClick={() => setActiveTab('team')}
+              className={`flex-1 px-4 py-3 font-semibold text-center transition-all ${
+                activeTab === 'team'
+                  ? 'bg-gradient-to-r from-green-50 to-blue-50 text-green-700 border-b-2 border-green-600'
+                  : 'text-gray-600'
+              }`}
+            >
+              NOSSO TIME
             </button>
           </div>
 
