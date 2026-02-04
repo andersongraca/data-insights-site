@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
-import { Mail, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
+import { TrendingUp, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
 
 interface NewsletterFormData {
@@ -35,17 +35,24 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="bg-gray-900 text-white py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Left - Logo */}
-          <div className="flex-shrink-0">
-            <img src={logo} alt="Data Insights Logo" className="h-12 w-auto" />
-          </div>
+    <>
+      {/* Divider Line */}
+      <div className="border-t border-gray-700/30"></div>
+      
+      <section className="bg-gray-900 text-white py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            {/* Left - Icon */}
+            <div className="flex-shrink-0 flex items-center gap-3">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                <TrendingUp className="h-4 w-4 text-green-400" />
+                <span className="text-gray-300">AI-Powered Data Solutions</span>
+              </div>
+            </div>
 
-          {/* Center - Newsletter Form */}
-          <div className="flex-1 flex flex-col items-center">
-            <h3 className="text-lg font-semibold mb-4 text-center">Junte-se à nossa newsletter</h3>
+            {/* Center - Newsletter Form */}
+            <div className="flex-1 flex flex-col items-center">
+              <h3 className="text-lg font-semibold mb-4 text-center">Junte-se à nossa newsletter</h3>
             <form onSubmit={handleSubmit} className="w-full max-w-md flex gap-2">
               <div className="flex-1 relative">
                 <input
@@ -61,7 +68,6 @@ const NewsletterSection = () => {
                 type="submit"
                 className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors flex items-center gap-2 whitespace-nowrap"
               >
-                <Mail className="h-4 w-4" />
                 Inscrever
               </button>
             </form>
@@ -73,8 +79,8 @@ const NewsletterSection = () => {
             )}
           </div>
 
-          {/* Right - Social Icons */}
-          <div className="flex items-center gap-4">
+            {/* Right - Social Icons */}
+            <div className="flex items-center gap-4">
             <a
               href="https://linkedin.com"
               target="_blank"
@@ -111,10 +117,11 @@ const NewsletterSection = () => {
             >
               <Instagram className="h-5 w-5" />
             </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
