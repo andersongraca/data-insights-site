@@ -14,6 +14,7 @@ import FloatingChat from './components/FloatingChat';
 import SaaSSolutions from './pages/SaaSSolutions';
 import PlatformOverviewSection from './components/PlatformOverviewSection';
 import OurTeam from './pages/OurTeam';
+import NewsletterSection from './components/NewsletterSection';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
       <SolutionsSection />
       <PlatformOverviewSection />
       <ResourcesSection />
+      <NewsletterSection />
       <ContactSection />
       <Footer />
       <FloatingChat />
