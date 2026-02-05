@@ -122,7 +122,7 @@ const resources = {
         },
         dataScience: {
           title: "Data Science & Analytics",
-          description: "Desbloqueie o poder dos seus dados com análises avançadas, modelação preditiva e machine learning. Ajudamos-lhe a tomar decisões baseadas em dados que impulsionam o crescimento, otimizam processos e descobrem oportunidades ocultas no seu negócio."
+          description: "Desbloqueie o poder dos seus dados com análises avançadas, modelação preditiva e machine learning. Ajudamos-o a tomar decisões baseadas em dados que impulsionam o crescimento, otimizam processos e descobrem oportunidades ocultas no seu negócio."
         },
         dataEngineering: {
           title: "Engenharia de Dados",

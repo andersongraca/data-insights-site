@@ -20,18 +20,18 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
   const features = [
     {
       icon: Cloud,
-      title: 'Cloud-Based',
+      title: 'Baseado na Cloud',
       description: 'Acesso de qualquer lugar, a qualquer hora, em qualquer dispositivo'
     },
     {
       icon: Zap,
-      title: 'Performance',
-      description: 'Infraestrutura otimizada para velocidade e confiabilidade máximas'
+      title: 'Desempenho',
+      description: 'Infraestrutura otimizada para velocidade e fiabilidade máximas'
     },
     {
       icon: Shield,
       title: 'Segurança',
-      description: 'Criptografia de nível empresarial e conformidade com padrões internacionais'
+      description: 'Encriptação de nível empresarial e conformidade com padrões internacionais'
     },
     {
       icon: BarChart3,
@@ -41,12 +41,12 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
     {
       icon: Users,
       title: 'Colaboração',
-      description: 'Ferramentas integradas para trabalho em equipe eficiente'
+      description: 'Ferramentas integradas para trabalho em equipa eficiente'
     },
     {
       icon: Cpu,
       title: 'Escalabilidade',
-      description: 'Cresce com seu negócio sem limitações de infraestrutura'
+      description: 'Cresce com o seu negócio sem limitações de infraestrutura'
     }
   ];
 
@@ -55,23 +55,23 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
       name: 'Starter',
       price: '89',
       currency: '€',
-      description: 'Perfeito para pequenas equipes',
-      features: ['Até 5 usuários', '10 GB de armazenamento', 'Suporte por email', 'Atualizações mensais']
+      description: 'Perfeito para pequenas equipas',
+      features: ['Até 5 utilizadores', '10 GB de armazenamento', 'Suporte por email', 'Atualizações mensais']
     },
     {
       name: 'Professional',
       price: '269',
       currency: '€',
       description: 'Para empresas em crescimento',
-      features: ['Até 50 usuários', '500 GB de armazenamento', 'Suporte prioritário', 'API access', 'Integrações customizadas'],
+      features: ['Até 50 utilizadores', '500 GB de armazenamento', 'Suporte prioritário', 'Acesso à API', 'Integrações personalizadas'],
       highlighted: true
     },
     {
       name: 'Enterprise',
-      price: 'Custom',
+      price: 'Personalizado',
       currency: '',
       description: 'Solução completa para grandes organizações',
-      features: ['Usuários ilimitados', 'Armazenamento ilimitado', 'Suporte 24/7 dedicado', 'SLA garantido', 'Implementação customizada']
+      features: ['Utilizadores ilimitados', 'Armazenamento ilimitado', 'Suporte 24/7 dedicado', 'SLA garantido', 'Implementação personalizada']
     }
   ];
 
@@ -88,12 +88,12 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
     },
     {
       title: 'Automação de Processos',
-      description: 'Reduza tarefas manuais e aumente produtividade',
+      description: 'Reduza tarefas manuais e aumente a produtividade',
       icon: '⚙️'
     },
     {
       title: 'Relatórios Avançados',
-      description: 'Gere insights profundos com análises customizadas',
+      description: 'Gere insights profundos com análises personalizadas',
       icon: '📈'
     }
   ];
@@ -118,7 +118,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
               </h1>
 
               <p className="text-xl text-gray-200 max-w-lg">
-                Plataforma cloud escalável, segura e intuitiva para transformar sua operação em um modelo moderno e eficiente.
+                Plataforma cloud escalável, segura e intuitiva para transformar a sua operação num modelo moderno e eficiente.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -127,7 +127,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
                   <ArrowRight className="ml-2 h-5 w-5 inline" />
                 </button>
                 <button className="bg-white/10 hover:bg-white/20 text-white border-white/30 text-lg px-8 py-4 backdrop-blur-sm rounded-lg font-medium transition-colors border">
-                  Ver Demo
+                  Ver Demonstração
                 </button>
               </div>
 
@@ -138,8 +138,8 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
                   <div className="text-gray-300 text-sm">Empresas Ativas</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold">99.9%</div>
-                  <div className="text-gray-300 text-sm">Uptime</div>
+                  <div className="text-3xl font-bold">99,9%</div>
+                  <div className="text-gray-300 text-sm">Disponibilidade</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold">24/7</div>
@@ -174,7 +174,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
               Recursos Poderosos
             </h2>
             <p className="text-xl text-gray-600">
-              Tudo que você precisa para gerenciar seu negócio com eficiência
+              Tudo o que precisa para gerir o seu negócio com eficiência
             </p>
           </div>
 
@@ -244,7 +244,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
               Planos de Preço
             </h2>
             <p className="text-xl text-gray-600">
-              Escolha o plano perfeito para sua empresa
+              Escolha o plano perfeito para a sua empresa
             </p>
           </div>
 
@@ -276,7 +276,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
                         : 'bg-green-600 text-white hover:bg-green-700'
                     }`}
                   >
-                    {plan.price === 'Custom' ? 'Solicitar Demo' : 'Começar Agora'}
+                    {plan.price === 'Personalizado' ? 'Solicitar Demonstração' : 'Começar Agora'}
                   </button>
 
                   <ul className="space-y-4">
@@ -300,7 +300,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
       <section className="gradient-bg py-20 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Pronto para Transformar Seu Negócio?
+            Pronto para Transformar o Seu Negócio?
           </h2>
           <p className="text-xl text-gray-200 mb-8">
             Comece com 14 dias de teste gratuito. Sem cartão de crédito necessário.
