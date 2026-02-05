@@ -148,17 +148,68 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
               </div>
             </div>
 
-            {/* Right - Visual */}
+            {/* Right - Dashboard Visual */}
             <div className="relative hidden md:block">
               <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-blue-500/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20">
-                <div className="space-y-4">
-                  <div className="h-12 bg-white/20 rounded-lg animate-pulse"></div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="h-24 bg-white/20 rounded-lg animate-pulse"></div>
-                    <div className="h-24 bg-white/20 rounded-lg animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
+                {/* Dashboard Header */}
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 className="text-white font-semibold text-lg">Performance em Tempo Real</h3>
+                    <p className="text-gray-300 text-sm">Última atualização: agora</p>
                   </div>
-                  <div className="h-32 bg-white/20 rounded-lg animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                  </div>
+                </div>
+
+                {/* Key Metrics */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-green-400/50 transition-all">
+                    <p className="text-gray-300 text-xs font-medium mb-2">Taxa de Conversão</p>
+                    <div className="text-2xl font-bold text-white">94,2%</div>
+                    <div className="text-green-400 text-xs mt-1">↑ 12,5%</div>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-blue-400/50 transition-all">
+                    <p className="text-gray-300 text-xs font-medium mb-2">Tempo Médio</p>
+                    <div className="text-2xl font-bold text-white">4,2m</div>
+                    <div className="text-blue-400 text-xs mt-1">↓ 8,2%</div>
+                  </div>
+                </div>
+
+                {/* Chart Visualization */}
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                  <p className="text-gray-300 text-xs font-medium mb-3">Tendência de Dados</p>
+                  <div className="flex items-end justify-between gap-2 h-24">
+                    {[40, 55, 45, 70, 60, 85, 75, 90].map((height, i) => (
+                      <div
+                        key={i}
+                        className="flex-1 bg-gradient-to-t from-green-400 to-blue-400 rounded-t opacity-80 hover:opacity-100 transition-opacity"
+                        style={{
+                          height: `${height}%`,
+                          animation: `slideUp 0.6s ease-out ${i * 0.1}s both`
+                        }}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Status Indicators */}
+                <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-white/10">
+                  <div className="text-center">
+                    <div className="text-green-400 text-lg font-bold">✓</div>
+                    <p className="text-gray-300 text-xs">Online</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-blue-400 text-lg font-bold">⚡</div>
+                    <p className="text-gray-300 text-xs">Rápido</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-purple-400 text-lg font-bold">🔒</div>
+                    <p className="text-gray-300 text-xs">Seguro</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -324,6 +375,15 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+        @keyframes slideUp {
+          from {
+            height: 0;
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
           }
         }
       `}</style>
