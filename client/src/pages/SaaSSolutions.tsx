@@ -53,13 +53,15 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
   const pricingPlans = [
     {
       name: 'Starter',
-      price: '99',
+      price: '89',
+      currency: '€',
       description: 'Perfeito para pequenas equipes',
       features: ['Até 5 usuários', '10 GB de armazenamento', 'Suporte por email', 'Atualizações mensais']
     },
     {
       name: 'Professional',
-      price: '299',
+      price: '269',
+      currency: '€',
       description: 'Para empresas em crescimento',
       features: ['Até 50 usuários', '500 GB de armazenamento', 'Suporte prioritário', 'API access', 'Integrações customizadas'],
       highlighted: true
@@ -67,6 +69,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
     {
       name: 'Enterprise',
       price: 'Custom',
+      currency: '',
       description: 'Solução completa para grandes organizações',
       features: ['Usuários ilimitados', 'Armazenamento ilimitado', 'Suporte 24/7 dedicado', 'SLA garantido', 'Implementação customizada']
     }
@@ -262,7 +265,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
                   </p>
 
                   <div className="mb-8">
-                    <span className="text-4xl font-bold">${plan.price}</span>
+                    <span className="text-4xl font-bold">{plan.currency}{plan.price}</span>
                     {plan.price !== 'Custom' && <span className={plan.highlighted ? 'text-green-100' : 'text-gray-600'}>/mês</span>}
                   </div>
 

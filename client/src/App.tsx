@@ -41,7 +41,7 @@ function App() {
       <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} />
       <HeroSection />
       <StrategicLeadersSection />
-      <SolutionsSection />
+      <SolutionsSection onNavigateToSaaS={() => setCurrentPage('saas')} />
       <PlatformOverviewSection />
       <ResourcesSection />
       <ContactSection />

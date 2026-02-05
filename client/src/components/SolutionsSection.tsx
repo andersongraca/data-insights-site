@@ -12,7 +12,11 @@ interface Solution {
   bgColor: string;
 }
 
-const SolutionsSection = () => {
+interface SolutionsSectionProps {
+  onNavigateToSaaS?: () => void;
+}
+
+const SolutionsSection = ({ onNavigateToSaaS }: SolutionsSectionProps) => {
   const { t } = useTranslation();
   const [selectedSolution, setSelectedSolution] = useState<string | null>(null);
 
@@ -155,15 +159,27 @@ const SolutionsSection = () => {
                 >
                   Fechar
                 </button>
-                <button
-                  onClick={() => {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                    setSelectedSolution(null);
-                  }}
-                  className="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
-                >
-                  Entrar em Contacto
-                </button>
+                {selectedSolution === 'saas' ? (
+                  <button
+                    onClick={() => {
+                      setSelectedSolution(null);
+                      onNavigateToSaaS?.();
+                    }}
+                    className="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+                  >
+                    Ver Planos de Preço
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      setSelectedSolution(null);
+                    }}
+                    className="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+                  >
+                    Entrar em Contacto
+                  </button>
+                )}
               </div>
             </div>
           </div>
