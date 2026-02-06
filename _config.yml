@@ -1,0 +1,8 @@
+# GitHub Pages configuration
+# Disable Jekyll processing
+markdown: kramdown
+theme: null
+
+# Cache control headers
+future: true
+show_drafts: false
