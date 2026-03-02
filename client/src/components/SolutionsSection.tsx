@@ -14,9 +14,10 @@ interface Solution {
 
 interface SolutionsSectionProps {
   onNavigateToSaaS?: () => void;
+  onNavigateToBI?: () => void;
 }
 
-const SolutionsSection = ({ onNavigateToSaaS }: SolutionsSectionProps) => {
+const SolutionsSection = ({ onNavigateToSaaS, onNavigateToBI }: SolutionsSectionProps) => {
   const { t } = useTranslation();
   const [selectedSolution, setSelectedSolution] = useState<string | null>(null);
 
@@ -44,9 +45,18 @@ const SolutionsSection = ({ onNavigateToSaaS }: SolutionsSectionProps) => {
       icon: Database,
       title: t('services.dataEngineering.title'),
       description: t('services.dataEngineering.description'),
-      details: 'Construímos pipelines robustos e escaláveis que garantem qualidade de dados, reduzem latência e facilitam a integração com seus sistemas existentes. Utilizamos tecnologias como Apache Spark, Kafka e cloud data warehouses.',
+      details: 'Construimos pipelines robustos e escaláveis que garantem qualidade de dados, reduzem latência e facilitam a integração com seus sistemas existentes. Utilizamos tecnologias como Apache Spark, Kafka e cloud data warehouses.',
       color: 'text-purple-600',
       bgColor: 'bg-purple-50'
+    },
+    {
+      id: 'businessIntelligence',
+      icon: BarChart3,
+      title: 'Business Intelligence',
+      description: 'Inteligência de negócios e dashboards avançados com análise em tempo real',
+      details: 'Nossas soluções de Business Intelligence transformam dados complexos em dashboards intuitivos e relatórios acionáveis. Com visualizações avançadas, análise preditiva e alertas inteligentes, sua equipa toma decisões estratégicas baseadas em dados comprovados.',
+      color: 'text-orange-600',
+      bgColor: 'bg-orange-50'
     }
   ];
 
@@ -159,7 +169,7 @@ const SolutionsSection = ({ onNavigateToSaaS }: SolutionsSectionProps) => {
                 >
                   Fechar
                 </button>
-                {selectedSolution === 'saas' ? (
+                {selectedSolution === 'saas' && (
                   <button
                     onClick={() => {
                       setSelectedSolution(null);
@@ -169,7 +179,19 @@ const SolutionsSection = ({ onNavigateToSaaS }: SolutionsSectionProps) => {
                   >
                     Ver Planos de Preço
                   </button>
-                ) : (
+                )}
+                {selectedSolution === 'businessIntelligence' && (
+                  <button
+                    onClick={() => {
+                      setSelectedSolution(null);
+                      onNavigateToBI?.();
+                    }}
+                    className="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+                  >
+                    Ver Dashboards
+                  </button>
+                )}
+                {selectedSolution !== 'saas' && selectedSolution !== 'businessIntelligence' && (
                   <button
                     onClick={() => {
                       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });

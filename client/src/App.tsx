@@ -15,10 +15,11 @@ import SaaSSolutions from './pages/SaaSSolutions';
 import PlatformOverviewSection from './components/PlatformOverviewSection';
 import OurTeam from './pages/OurTeam';
 import NewsletterSection from './components/NewsletterSection';
+import BusinessIntelligencePage from './pages/BusinessIntelligencePage';
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'bi'>('home');
 
   if (currentPage === 'saas') {
     return (
@@ -36,12 +37,20 @@ function App() {
     );
   }
 
+  if (currentPage === 'bi') {
+    return (
+      <div className="min-h-screen">
+        <BusinessIntelligencePage onBack={() => setCurrentPage('home')} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} />
       <HeroSection />
       <StrategicLeadersSection />
-      <SolutionsSection onNavigateToSaaS={() => setCurrentPage('saas')} />
+      <SolutionsSection onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToBI={() => setCurrentPage('bi')} />
       <PlatformOverviewSection />
       <ResourcesSection />
       <ContactSection />
