@@ -11,7 +11,7 @@ const ResourcesSection = () => {
     {
       id: 1,
       title: 'Indústria',
-      description: 'Otimize processos de manufatura com análise de dados em tempo real e previsão de demanda',
+      description: 'Otimize manufatura com análise de dados e previsão de demanda',
       icon: Factory,
       color: 'from-blue-500 to-blue-600',
       bgGradient: 'from-blue-500/20 to-blue-600/20',
@@ -21,7 +21,7 @@ const ResourcesSection = () => {
     {
       id: 2,
       title: 'Têxtil',
-      description: 'Gerencie cadeias de suprimento complexas e otimize inventário com inteligência artificial',
+      description: 'Gerencie cadeias de suprimento e otimize inventário com IA',
       icon: Shirt,
       color: 'from-purple-500 to-purple-600',
       bgGradient: 'from-purple-500/20 to-purple-600/20',
@@ -41,7 +41,7 @@ const ResourcesSection = () => {
     {
       id: 4,
       title: 'Logística',
-      description: 'Acompanhe movimentação de carga e otimize armazenagem com análise preditiva',
+      description: 'Acompanhe carga e otimize armazenagem com análise preditiva',
       icon: Package,
       color: 'from-orange-500 to-orange-600',
       bgGradient: 'from-orange-500/20 to-orange-600/20',
@@ -51,7 +51,7 @@ const ResourcesSection = () => {
     {
       id: 5,
       title: 'Comércio a Retalho',
-      description: 'Aumente vendas com análise de comportamento de clientes e gestão de estoque inteligente',
+      description: 'Aumente vendas com análise de clientes e gestão de estoque',
       icon: ShoppingCart,
       color: 'from-pink-500 to-pink-600',
       bgGradient: 'from-pink-500/20 to-pink-600/20',
@@ -61,7 +61,7 @@ const ResourcesSection = () => {
     {
       id: 6,
       title: 'Prestação de Serviços',
-      description: 'Melhore alocação de recursos e acompanhe performance com métricas em tempo real',
+      description: 'Melhore alocação de recursos e performance com métricas',
       icon: Briefcase,
       color: 'from-indigo-500 to-indigo-600',
       bgGradient: 'from-indigo-500/20 to-indigo-600/20',
