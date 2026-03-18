@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Factory, Shirt, Truck, Package, ShoppingCart, Briefcase, TrendingUp, BarChart3, Zap, ArrowRight } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 const ResourcesSection = () => {
   const { t } = useTranslation();
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const sectors = [
     {
@@ -67,6 +70,34 @@ const ResourcesSection = () => {
     }
   ];
 
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = cardsRef.current.indexOf(entry.target as HTMLDivElement);
+          if (index !== -1 && !visibleCards.includes(index)) {
+            setVisibleCards((prev) => [...prev, index]);
+          }
+        }
+      });
+    }, observerOptions);
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardsRef.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, [visibleCards]);
+
   return (
     <section id="resources" className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,12 +117,26 @@ const ResourcesSection = () => {
 
         {/* Sectors Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {sectors.map((sector) => {
+          {sectors.map((sector, index) => {
             const Icon = sector.icon;
+            const isVisible = visibleCards.includes(index);
+            
             return (
               <div
                 key={sector.id}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+                ref={(el) => {
+                  cardsRef.current[index] = el;
+                }}
+                className={`group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full transform ${
+                  isVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
+                style={{
+                  transitionDuration: isVisible ? '600ms' : '0ms',
+                  transitionDelay: isVisible ? `${index * 100}ms` : '0ms',
+                  transitionProperty: isVisible ? 'opacity, transform' : 'none'
+                }}
               >
                 {/* Top Color Bar */}
                 <div className={`h-1 bg-gradient-to-r ${sector.color}`}></div>
@@ -176,6 +221,23 @@ const ResourcesSection = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };
