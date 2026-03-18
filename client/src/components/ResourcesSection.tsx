@@ -1,106 +1,179 @@
 import { useTranslation } from 'react-i18next';
-import { BookOpen, Video, FileText, Code, Zap, Users } from 'lucide-react';
+import { Factory, Shirt, Truck, Package, ShoppingCart, Briefcase, TrendingUp, BarChart3, Zap } from 'lucide-react';
 
 const ResourcesSection = () => {
   const { t } = useTranslation();
 
-  const resources = [
+  const sectors = [
     {
       id: 1,
-      title: 'Documentação Completa',
-      description: 'Guias detalhados e documentação técnica de todas as nossas soluções',
-      icon: <FileText className="h-8 w-8" />,
-      color: 'from-blue-500 to-blue-600'
+      title: 'Indústria',
+      description: 'Otimize processos de manufatura com análise de dados em tempo real e previsão de demanda',
+      icon: Factory,
+      color: 'from-blue-500 to-blue-600',
+      bgGradient: 'from-blue-500/20 to-blue-600/20',
+      benefits: ['Redução de custos', 'Aumento de eficiência', 'Controle de qualidade'],
+      stats: '45% de aumento em produtividade'
     },
     {
       id: 2,
-      title: 'Tutoriais em Vídeo',
-      description: 'Aprenda passo a passo com nossos tutoriais em vídeo de alta qualidade',
-      icon: <Video className="h-8 w-8" />,
-      color: 'from-purple-500 to-purple-600'
+      title: 'Têxtil',
+      description: 'Gerencie cadeias de suprimento complexas e otimize inventário com inteligência artificial',
+      icon: Shirt,
+      color: 'from-purple-500 to-purple-600',
+      bgGradient: 'from-purple-500/20 to-purple-600/20',
+      benefits: ['Gestão de inventário', 'Previsão de tendências', 'Redução de desperdício'],
+      stats: '38% redução em desperdício'
     },
     {
       id: 3,
-      title: 'API Reference',
-      description: 'Referência completa de APIs para integração com suas aplicações',
-      icon: <Code className="h-8 w-8" />,
-      color: 'from-green-500 to-green-600'
+      title: 'Distribuição',
+      description: 'Otimize rotas de entrega e gerencie logística com dashboards inteligentes',
+      icon: Truck,
+      color: 'from-green-500 to-green-600',
+      bgGradient: 'from-green-500/20 to-green-600/20',
+      benefits: ['Otimização de rotas', 'Rastreamento em tempo real', 'Redução de custos'],
+      stats: '52% redução em tempo de entrega'
     },
     {
       id: 4,
-      title: 'Blog & Artigos',
-      description: 'Insights, dicas e melhores práticas sobre dados e análise',
-      icon: <BookOpen className="h-8 w-8" />,
-      color: 'from-orange-500 to-orange-600'
+      title: 'Logística',
+      description: 'Acompanhe movimentação de carga e otimize armazenagem com análise preditiva',
+      icon: Package,
+      color: 'from-orange-500 to-orange-600',
+      bgGradient: 'from-orange-500/20 to-orange-600/20',
+      benefits: ['Rastreamento completo', 'Previsão de demanda', 'Otimização de espaço'],
+      stats: '60% melhoria em eficiência'
     },
     {
       id: 5,
-      title: 'Webinars & Eventos',
-      description: 'Eventos exclusivos com especialistas',
-      icon: <Zap className="h-8 w-8" />,
-      color: 'from-red-500 to-red-600'
+      title: 'Comércio a Retalho',
+      description: 'Aumente vendas com análise de comportamento de clientes e gestão de estoque inteligente',
+      icon: ShoppingCart,
+      color: 'from-pink-500 to-pink-600',
+      bgGradient: 'from-pink-500/20 to-pink-600/20',
+      benefits: ['Análise de vendas', 'Gestão de estoque', 'Experiência do cliente'],
+      stats: '35% aumento em vendas'
     },
     {
       id: 6,
-      title: 'Comunidade',
-      description: 'Conecte-se com outros usuários e compartilhe experiências',
-      icon: <Users className="h-8 w-8" />,
-      color: 'from-pink-500 to-pink-600'
+      title: 'Prestação de Serviços',
+      description: 'Melhore alocação de recursos e acompanhe performance com métricas em tempo real',
+      icon: Briefcase,
+      color: 'from-indigo-500 to-indigo-600',
+      bgGradient: 'from-indigo-500/20 to-indigo-600/20',
+      benefits: ['Alocação de recursos', 'Análise de performance', 'Satisfação do cliente'],
+      stats: '48% melhoria em produtividade'
     }
   ];
 
   return (
-    <section id="resources" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="resources" className="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full text-sm font-medium text-gray-900 mb-6 border border-blue-200">
+            <BarChart3 className="h-4 w-4 text-blue-600" />
+            <span>Soluções por Setor</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Recursos & Aprendizado
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Tudo que você precisa para dominar nossas soluções e maximizar o valor do seu investimento
           </p>
         </div>
 
-        {/* Resources Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {resources.map((resource) => (
-            <div
-              key={resource.id}
-              className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1"
-            >
-              {/* Icon Background */}
-              <div className={`bg-gradient-to-br ${resource.color} p-6 text-white`}>
-                {resource.icon}
-              </div>
+        {/* Sectors Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {sectors.map((sector) => {
+            const Icon = sector.icon;
+            return (
+              <div
+                key={sector.id}
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              >
+                {/* Top Color Bar */}
+                <div className={`h-1 bg-gradient-to-r ${sector.color}`}></div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {resource.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {resource.description}
-                </p>
-                <button className="text-green-600 font-semibold hover:text-green-700 transition-colors flex items-center gap-2">
-                  Saiba Mais →
-                </button>
+                {/* Icon Background */}
+                <div className={`bg-gradient-to-br ${sector.color} p-6 text-white relative overflow-hidden`}>
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white to-transparent"></div>
+                  </div>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <Icon className="h-10 w-10" />
+                    <TrendingUp className="h-6 w-6 opacity-60" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                    {sector.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {sector.description}
+                  </p>
+
+                  {/* Stats */}
+                  <div className={`bg-gradient-to-br ${sector.bgGradient} rounded-lg p-4 mb-6 border border-gray-200`}>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {sector.stats}
+                    </p>
+                  </div>
+
+                  {/* Benefits */}
+                  <div className="space-y-3 mb-6">
+                    {sector.benefits.map((benefit, idx) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${sector.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                          <Zap className="w-3 h-3 text-white" />
+                        </div>
+                        <span className="text-gray-700 text-sm font-medium">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA Button */}
+                  <button className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r ${sector.color} text-white hover:shadow-lg hover:shadow-current/50 group inline-flex items-center justify-center gap-2`}>
+                    Saiba Mais
+                    <Zap className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
+                {/* Hover Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${sector.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-12 text-center text-white">
-          <h3 className="text-3xl font-bold mb-4">
-            Pronto para começar?
-          </h3>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Acesse todos os recursos e comece sua jornada com nossas soluções hoje mesmo
-          </p>
-          <button className="bg-white text-green-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors">
-            Explorar Recursos
-          </button>
+        <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-12 md:p-16 text-white overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          </div>
+
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
+            <h3 className="text-4xl md:text-5xl font-bold mb-6">
+              Transforme Seu Negócio com Dados
+            </h3>
+            <p className="text-xl text-slate-300 mb-10 leading-relaxed">
+              Independentemente do seu setor, temos a solução perfeita para maximizar o valor dos seus dados e impulsionar o crescimento do seu negócio.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300 flex items-center justify-center gap-2">
+                Pedir Proposta
+                <Zap className="w-5 h-5" />
+              </button>
+              <button className="px-8 py-4 border-2 border-slate-400 text-white rounded-lg font-semibold hover:border-slate-300 hover:bg-white/10 transition-all duration-300">
+                Ver Casos de Sucesso
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

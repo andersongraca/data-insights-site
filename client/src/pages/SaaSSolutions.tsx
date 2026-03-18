@@ -138,7 +138,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 flex items-center justify-center gap-2">
-                Começar Teste Gratuito <ChevronRight className="w-5 h-5" />
+                Pedir Proposta <ChevronRight className="w-5 h-5" />
               </button>
               <button className="px-8 py-4 border border-cyan-500/50 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-500/10 transition-all duration-300">
                 Ver Demonstração
@@ -403,7 +403,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
                         : 'border border-slate-600 text-slate-300 hover:border-cyan-500/50 hover:text-cyan-400'
                     }`}
                   >
-                    Começar Agora
+                    Pedir Proposta
                   </button>
 
                   <ul className="space-y-4">
@@ -459,7 +459,7 @@ const SaaSSolutions = ({ onBack }: SaaSSolutionsProps) => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-green-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 flex items-center justify-center gap-2">
-              Começar Teste Gratuito <ChevronRight className="w-5 h-5" />
+              Pedir Proposta <ChevronRight className="w-5 h-5" />
             </button>
             <button className="px-8 py-4 border border-cyan-500/50 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-500/10 transition-all duration-300">
               Falar com Especialista

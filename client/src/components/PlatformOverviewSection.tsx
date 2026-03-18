@@ -231,7 +231,7 @@ const PlatformOverviewSection = () => {
         {/* CTA */}
         <div className="mt-20 text-center">
           <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-lg px-10 py-4 rounded-xl font-bold transition-all hover:shadow-2xl hover:shadow-blue-500/50 group inline-flex items-center gap-3">
-            Começar Transformação Estratégica
+            Pedir Proposta
             <Rocket className="h-5 w-5 group-hover:translate-y-1 transition-transform" />
           </button>
         </div>

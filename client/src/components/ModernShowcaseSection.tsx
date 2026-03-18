@@ -181,7 +181,7 @@ const ModernShowcaseSection = () => {
         {/* CTA */}
         <div className={`mt-16 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ transitionDelay: '400ms' }}>
           <button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-lg px-10 py-4 rounded-xl font-bold transition-all hover:shadow-2xl hover:shadow-green-500/50 group inline-flex items-center gap-3">
-            Começar Transformação
+            Pedir Proposta
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
