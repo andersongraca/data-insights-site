@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Factory, Shirt, Truck, Package, ShoppingCart, Briefcase, TrendingUp, BarChart3, Zap } from 'lucide-react';
+import { Factory, Shirt, Truck, Package, ShoppingCart, Briefcase, TrendingUp, BarChart3, Zap, ArrowRight } from 'lucide-react';
 
 const ResourcesSection = () => {
   const { t } = useTranslation();
@@ -91,7 +91,7 @@ const ResourcesSection = () => {
             return (
               <div
                 key={sector.id}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
               >
                 {/* Top Color Bar */}
                 <div className={`h-1 bg-gradient-to-r ${sector.color}`}></div>
@@ -107,38 +107,38 @@ const ResourcesSection = () => {
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-8">
+                {/* Content - Flex grow para ocupar espaço disponível */}
+                <div className="p-8 flex flex-col flex-grow">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">
                     {sector.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 mb-6 leading-relaxed text-justify">
                     {sector.description}
                   </p>
 
                   {/* Stats */}
                   <div className={`bg-gradient-to-br ${sector.bgGradient} rounded-lg p-4 mb-6 border border-gray-200`}>
-                    <p className="text-sm font-semibold text-gray-900">
+                    <p className="text-sm font-semibold text-gray-900 text-center">
                       {sector.stats}
                     </p>
                   </div>
 
                   {/* Benefits */}
-                  <div className="space-y-3 mb-6">
+                  <div className="space-y-3 mb-6 flex-grow">
                     {sector.benefits.map((benefit, idx) => (
                       <div key={idx} className="flex items-start gap-3">
                         <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${sector.color} flex items-center justify-center flex-shrink-0 mt-0.5`}>
                           <Zap className="w-3 h-3 text-white" />
                         </div>
-                        <span className="text-gray-700 text-sm font-medium">{benefit}</span>
+                        <span className="text-gray-700 text-sm font-medium text-justify">{benefit}</span>
                       </div>
                     ))}
                   </div>
 
-                  {/* CTA Button */}
-                  <button className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r ${sector.color} text-white hover:shadow-lg hover:shadow-current/50 group inline-flex items-center justify-center gap-2`}>
+                  {/* CTA Button - Sempre no final */}
+                  <button className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r ${sector.color} text-white hover:shadow-lg hover:shadow-current/50 group inline-flex items-center justify-center gap-2 mt-auto`}>
                     Saiba Mais
-                    <Zap className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
 
