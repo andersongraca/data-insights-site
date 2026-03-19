@@ -1,12 +1,18 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Send } from 'lucide-react';
+import { Mail, Send, CheckCircle } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
 
 interface FormData {
   name: string;
   email: string;
   message: string;
+}
+
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
 }
 
 const ContactSection = () => {
@@ -17,6 +23,38 @@ const ContactSection = () => {
     message: ''
   });
   const [status, setStatus] = useState<'' | 'success' | 'error'>('');
+  const [captchaToken, setCaptchaToken] = useState<string>('');
+  const [captchaLoaded, setCaptchaLoaded] = useState(false);
+
+  // Load reCAPTCHA script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      setCaptchaLoaded(true);
+      // Render reCAPTCHA
+      if (window.grecaptcha) {
+        window.grecaptcha.render('recaptcha-container', {
+          sitekey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', // This is a test key - replace with your actual key
+          theme: 'light',
+          callback: onCaptchaChange
+        });
+      }
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
+  const onCaptchaChange = (token: string) => {
+    setCaptchaToken(token);
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -34,9 +72,22 @@ const ContactSection = () => {
       return;
     }
 
+    if (!captchaToken) {
+      setStatus('error');
+      setTimeout(() => setStatus(''), 3000);
+      return;
+    }
+
     // Simulate form submission
     setStatus('success');
     setFormData({ name: '', email: '', message: '' });
+    setCaptchaToken('');
+    
+    // Reset reCAPTCHA
+    if (window.grecaptcha) {
+      window.grecaptcha.reset();
+    }
+    
     setTimeout(() => setStatus(''), 5000);
   };
 
@@ -48,7 +99,7 @@ const ContactSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             {t('contact.title')}
           </h2>
@@ -57,88 +108,86 @@ const ContactSection = () => {
           </p>
         </div>
 
-        {/* Logo - Large and Dynamic */}
-        <div className="flex justify-center mb-16">
-          <div className="relative">
-            {/* Animated background circle */}
-            <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-blue-400/10 rounded-full blur-2xl animate-pulse"></div>
-            
-            {/* Logo container with hover effect */}
-            <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 border border-white/20">
-              <img 
-                src={logo} 
-                alt="Data Insights Logo" 
-                className="h-64 md:h-80 lg:h-96 w-auto mx-auto drop-shadow-lg hover:drop-shadow-2xl transition-all duration-500" 
-              />
-            </div>
-          </div>
-        </div>
-
         {/* Main Contact Layout */}
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left Side - Contact Info */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 border border-green-100/50 backdrop-blur-sm">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Informações de Contato</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-600 rounded-full p-3 mt-1 flex-shrink-0">
-                    <Mail className="h-5 w-5 text-white" />
+        <div className="grid md:grid-cols-3 gap-8 items-start">
+          {/* Left Side - Logo and Contact Info */}
+          <div className="space-y-6">
+            {/* Logo - Smaller and positioned to the left */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-blue-400/10 rounded-2xl blur-xl"></div>
+              <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20">
+                <img 
+                  src={logo} 
+                  alt="Data Insights Logo" 
+                  className="h-40 w-auto mx-auto drop-shadow-lg hover:drop-shadow-xl transition-all duration-300" 
+                />
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6 border border-green-100/50 backdrop-blur-sm">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Informações de Contato</h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="bg-green-600 rounded-full p-2 mt-0.5 flex-shrink-0">
+                    <Mail className="h-4 w-4 text-white" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Email</p>
-                    <p className="text-lg font-semibold text-gray-900">contact@datainsights.com</p>
+                    <p className="text-xs font-medium text-gray-600">Email</p>
+                    <p className="text-sm font-semibold text-gray-900">contact@datainsights.com</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Quick stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                <p className="text-3xl font-bold text-green-600">24/7</p>
-                <p className="text-sm text-gray-600 mt-2">Suporte Disponível</p>
+            <div className="space-y-3">
+              <div className="bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <p className="text-2xl font-bold text-green-600">24/7</p>
+                <p className="text-xs text-gray-600 mt-1">Suporte Disponível</p>
               </div>
-              <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                <p className="text-3xl font-bold text-blue-600">+50</p>
-                <p className="text-sm text-gray-600 mt-2">Clientes Ativos</p>
+              <div className="bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <p className="text-2xl font-bold text-blue-600">+50</p>
+                <p className="text-xs text-gray-600 mt-1">Clientes Ativos</p>
               </div>
             </div>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <div>
+          {/* Right Side - Contact Form (spans 2 columns) */}
+          <div className="md:col-span-2">
             <div className="bg-gradient-to-br from-blue-50 to-green-50 rounded-3xl p-8 md:p-10 shadow-xl border border-blue-100/50 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Envie uma Mensagem</h3>
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.name')}
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm"
-                    placeholder={t('contact.form.name')}
-                  />
-                </div>
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      {t('contact.form.name')}
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm"
+                      placeholder={t('contact.form.name')}
+                    />
+                  </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.email')}
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm"
-                    placeholder={t('contact.form.email')}
-                  />
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      {t('contact.form.email')}
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm"
+                      placeholder={t('contact.form.email')}
+                    />
+                  </div>
                 </div>
 
                 <div>
@@ -150,27 +199,34 @@ const ContactSection = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={5}
+                    rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm resize-none"
                     placeholder={t('contact.form.message')}
                   />
                 </div>
 
+                {/* reCAPTCHA */}
+                <div className="flex justify-center p-4 bg-white/50 rounded-lg border border-gray-200">
+                  <div id="recaptcha-container"></div>
+                </div>
+
                 {status === 'success' && (
-                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg animate-in fade-in">
+                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg animate-in fade-in flex items-center gap-2">
+                    <CheckCircle className="h-5 w-5" />
                     {t('contact.form.success')}
                   </div>
                 )}
 
                 {status === 'error' && (
                   <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg animate-in fade-in">
-                    {t('contact.form.error')}
+                    {t('contact.form.error')} {!captchaToken && 'Por favor, complete o reCAPTCHA.'}
                   </div>
                 )}
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white text-lg py-3 px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl transform hover:scale-105"
+                  disabled={!captchaLoaded}
+                  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:from-gray-400 disabled:to-gray-500 text-white text-lg py-3 px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl transform hover:scale-105 disabled:hover:scale-100"
                 >
                   <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   {t('contact.form.submit')}
