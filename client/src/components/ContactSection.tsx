@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Send, CheckCircle } from 'lucide-react';
+import { Mail, Send, CheckCircle, Loader } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
 
 interface FormData {
@@ -22,7 +22,7 @@ const ContactSection = () => {
     email: '',
     message: ''
   });
-  const [status, setStatus] = useState<'' | 'success' | 'error'>('');
+  const [status, setStatus] = useState<'' | 'success' | 'error' | 'loading'>('');
   const [captchaToken, setCaptchaToken] = useState<string>('');
   const [captchaLoaded, setCaptchaLoaded] = useState(false);
 
@@ -63,7 +63,7 @@ const ContactSection = () => {
     });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.message) {
@@ -78,17 +78,28 @@ const ContactSection = () => {
       return;
     }
 
-    // Simulate form submission
-    setStatus('success');
-    setFormData({ name: '', email: '', message: '' });
-    setCaptchaToken('');
-    
-    // Reset reCAPTCHA
-    if (window.grecaptcha) {
-      window.grecaptcha.reset();
+    // Start loading animation
+    setStatus('loading');
+
+    // Simulate form submission with delay
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Success
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      setCaptchaToken('');
+      
+      // Reset reCAPTCHA
+      if (window.grecaptcha) {
+        window.grecaptcha.reset();
+      }
+      
+      setTimeout(() => setStatus(''), 5000);
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus(''), 3000);
     }
-    
-    setTimeout(() => setStatus(''), 5000);
   };
 
   return (
@@ -169,7 +180,8 @@ const ContactSection = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm"
+                      disabled={status === 'loading'}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder={t('contact.form.name')}
                     />
                   </div>
@@ -184,7 +196,8 @@ const ContactSection = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm"
+                      disabled={status === 'loading'}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder={t('contact.form.email')}
                     />
                   </div>
@@ -199,8 +212,9 @@ const ContactSection = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    disabled={status === 'loading'}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all bg-white/80 backdrop-blur-sm resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder={t('contact.form.message')}
                   />
                 </div>
@@ -210,10 +224,22 @@ const ContactSection = () => {
                   <div id="recaptcha-container"></div>
                 </div>
 
+                {/* Loading Animation */}
+                {status === 'loading' && (
+                  <div className="bg-blue-50 border border-blue-300 rounded-lg p-4 flex items-center justify-center gap-3">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                      <div className="w-2 h-2 bg-green-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">Enviando sua mensagem...</span>
+                  </div>
+                )}
+
                 {status === 'success' && (
                   <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg animate-in fade-in flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5" />
-                    {t('contact.form.success')}
+                    <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                    <span>{t('contact.form.success')}</span>
                   </div>
                 )}
 
@@ -225,11 +251,20 @@ const ContactSection = () => {
 
                 <button
                   type="submit"
-                  disabled={!captchaLoaded}
-                  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:from-gray-400 disabled:to-gray-500 text-white text-lg py-3 px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl transform hover:scale-105 disabled:hover:scale-100"
+                  disabled={!captchaLoaded || status === 'loading'}
+                  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:from-gray-400 disabled:to-gray-500 text-white text-lg py-3 px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl transform hover:scale-105 disabled:hover:scale-100 disabled:cursor-not-allowed"
                 >
-                  <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  {t('contact.form.submit')}
+                  {status === 'loading' ? (
+                    <>
+                      <Loader className="h-5 w-5 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      {t('contact.form.submit')}
+                    </>
+                  )}
                 </button>
               </form>
             </div>
