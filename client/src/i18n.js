@@ -19,7 +19,7 @@ const resources = {
       hero: {
         title: "Transform Your Data into Strategic Insights",
         subtitle: "We deliver cutting-edge SaaS solutions, Data Science & Analytics, and Data Engineering services to accelerate your business growth.",
-        cta1: "Get Started",
+        cta1: "Request Proposal",
         cta2: "Learn More"
       },
       services: {
@@ -110,7 +110,7 @@ const resources = {
       hero: {
         title: "Transforme os Seus Dados em Insights Estratégicos",
         subtitle: "Oferecemos soluções SaaS de ponta, Data Science & Analytics e serviços de Engenharia de Dados para acelerar o crescimento do seu negócio.",
-        cta1: "Começar",
+        cta1: "Pedir Proposta",
         cta2: "Saber Mais"
       },
       services: {
