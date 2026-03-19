@@ -1,22 +1,2 @@
-[2026-03-18T19:10:14.327Z] 3:10:14 PM [vite] (client) page reload 404.html
-[2026-03-18T19:10:14.353Z] 3:10:14 PM [vite] (client) page reload index.html
-[2026-03-19T10:25:29.537Z] 6:25:29 AM [vite] (client) page reload client/index.html
-[2026-03-19T10:25:29.539Z] 6:25:29 AM [vite] (client) page reload client/public/404.html
-[2026-03-19T10:25:29.550Z] 6:25:29 AM [vite] (client) page reload index.html
-[2026-03-19T10:25:29.552Z] 6:25:29 AM [vite] changed tsconfig file detected: /home/ubuntu/data-insights-site/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
-[2026-03-19T10:26:46.046Z] 6:26:46 AM [vite] (client) page reload index.html
-[2026-03-19T10:26:46.047Z] 6:26:46 AM [vite] (client) page reload 404.html
-[2026-03-19T10:26:46.132Z] 6:26:46 AM [vite] changed tsconfig file detected: /home/ubuntu/data-insights-site/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
-[2026-03-19T10:26:46.134Z] 6:26:46 AM [vite] (client) page reload client/index.html
-[2026-03-19T10:26:46.134Z] 6:26:46 AM [vite] (client) page reload client/public/404.html
-[2026-03-19T10:26:50.187Z] 6:26:50 AM [vite] (client) page reload 404.html
-[2026-03-19T10:26:50.187Z] 6:26:50 AM [vite] (client) page reload index.html
-[2026-03-19T10:26:57.947Z] 6:26:57 AM [vite] (client) page reload client/index.html
-[2026-03-19T10:26:57.949Z] 6:26:57 AM [vite] (client) page reload client/public/404.html
-[2026-03-19T10:26:57.963Z] 6:26:57 AM [vite] (client) page reload index.html
-[2026-03-19T10:26:57.963Z] 6:26:57 AM [vite] changed tsconfig file detected: /home/ubuntu/data-insights-site/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
-[2026-03-19T10:27:25.428Z] 6:27:25 AM [vite] (client) page reload 404.html
-[2026-03-19T10:27:25.434Z] 6:27:25 AM [vite] (client) page reload index.html
-[2026-03-19T10:27:25.520Z] 6:27:25 AM [vite] changed tsconfig file detected: /home/ubuntu/data-insights-site/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
-[2026-03-19T10:27:25.522Z] 6:27:25 AM [vite] (client) page reload client/index.html
-[2026-03-19T10:27:25.523Z] 6:27:25 AM [vite] (client) page reload client/public/404.html
+[2026-03-19T11:08:40.132Z] 7:08:40 AM [vite] (client) page reload 404.html
+[2026-03-19T11:08:40.140Z] 7:08:40 AM [vite] (client) page reload index.html
