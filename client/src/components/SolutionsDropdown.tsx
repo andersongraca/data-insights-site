@@ -106,7 +106,11 @@ const solutions: Solution[] = [
   },
 ];
 
-export default function SolutionsDropdown() {
+interface SolutionsDropdownProps {
+  onNavigateToTeam?: () => void;
+}
+
+export default function SolutionsDropdown({ onNavigateToTeam }: SolutionsDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'use-case' | 'role' | 'team'>('use-case');
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -175,6 +179,12 @@ export default function SolutionsDropdown() {
             {filteredSolutions.map(solution => (
               <div
                 key={solution.id}
+                onClick={() => {
+                  if (solution.id === 'our-team' && onNavigateToTeam) {
+                    onNavigateToTeam();
+                    setIsOpen(false);
+                  }
+                }}
                 className="p-4 rounded-lg border border-border hover:border-primary hover:bg-muted transition-all cursor-pointer group"
               >
                 <div className="flex items-start gap-3 mb-2">

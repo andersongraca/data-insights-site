@@ -59,14 +59,7 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
             </button>
 
             {/* Solutions Dropdown */}
-            <SolutionsDropdown />
-
-            <button
-              onClick={onNavigateToTeam}
-              className="text-gray-700 hover:text-green-600 font-medium transition-colors"
-            >
-              Nosso Time
-            </button>
+            <SolutionsDropdown onNavigateToTeam={onNavigateToTeam} />
 
             <button
               onClick={() => scrollToSection('contact')}
@@ -134,19 +127,9 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
               {/* Mobile Solutions Dropdown */}
               <div className="px-2">
                 <div onClick={() => setIsOpen(false)}>
-                  <SolutionsDropdown />
+                  <SolutionsDropdown onNavigateToTeam={onNavigateToTeam} />
                 </div>
               </div>
-
-              <button
-                onClick={() => {
-                  onNavigateToTeam?.();
-                  setIsOpen(false);
-                }}
-                className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2"
-              >
-                Nosso Time
-              </button>
 
               <button
                 onClick={() => scrollToSection('contact')}

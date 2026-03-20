@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Award, GraduationCap, Briefcase, ArrowLeft, Linkedin, Code2, Database } from 'lucide-react';
+import { Award, GraduationCap, Briefcase, ArrowLeft, Linkedin } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -42,7 +42,7 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
         'ITIL Certified',
         '15+ anos em Data Science'
       ],
-      color: 'from-cyan-400 to-green-500',
+      color: 'from-cyan-500 to-cyan-600',
       skills: ['Data Science', 'Business Intelligence', 'Strategic Leadership'],
       linkedin: 'https://www.linkedin.com/in/anderson-graça'
     },
@@ -58,7 +58,7 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
         'PostgreSQL Database Design',
         'Agile Development Methodology'
       ],
-      color: 'from-orange-400 to-purple-500',
+      color: 'from-orange-500 to-orange-600',
       skills: ['ReactJS', 'NodeJS', 'PostgreSQL'],
       linkedin: 'https://www.linkedin.com/in/marcio-alves-b0012098'
     }
@@ -70,7 +70,7 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Animated background elements */}
+        {/* Animated background elements - using corporate colors */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -108,7 +108,7 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
                   visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
               >
-                {/* Glass-morphism card */}
+                {/* Glass-morphism card with corporate colors */}
                 <div className="relative h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 hover:border-white/40 shadow-2xl hover:shadow-2xl transition-all duration-500 overflow-hidden group-hover:bg-white/15">
                   {/* Gradient overlay on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${member.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
@@ -210,19 +210,19 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
                 icon: '🎯',
                 title: 'Expertise Comprovada',
                 description: 'Mais de 15 anos transformando dados em decisões estratégicas',
-                color: 'from-cyan-500 to-blue-500'
+                color: 'from-cyan-500 to-cyan-600'
               },
               {
                 icon: '💡',
                 title: 'Inovação Contínua',
                 description: 'Sempre à frente das tendências em IA, Data Science e desenvolvimento ágil',
-                color: 'from-green-500 to-cyan-500'
+                color: 'from-green-500 to-green-600'
               },
               {
                 icon: '📈',
                 title: 'Resultados Mensuráveis',
                 description: 'ROI comprovado em 90 dias para nossos clientes com métricas claras',
-                color: 'from-orange-500 to-purple-500'
+                color: 'from-orange-500 to-orange-600'
               }
             ].map((item, idx) => (
               <div
@@ -246,9 +246,9 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { label: 'Anos de Experiência', value: '15+', icon: '📊', color: 'from-cyan-500 to-green-500' },
-              { label: 'Clientes Transformados', value: '500+', icon: '🏢', color: 'from-green-500 to-orange-500' },
-              { label: 'Taxa de Sucesso', value: '98%', icon: '✨', color: 'from-orange-500 to-purple-500' }
+              { label: 'Anos de Experiência', value: '15+', icon: '📊', color: 'from-cyan-500 to-cyan-600' },
+              { label: 'Clientes Transformados', value: '500+', icon: '🏢', color: 'from-green-500 to-green-600' },
+              { label: 'Taxa de Sucesso', value: '98%', icon: '✨', color: 'from-orange-500 to-orange-600' }
             ].map((stat, idx) => (
               <div
                 key={idx}
