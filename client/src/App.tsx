@@ -16,6 +16,7 @@ import PlatformOverviewSection from './components/PlatformOverviewSection';
 import OurTeam from './pages/OurTeam';
 import NewsletterSection from './components/NewsletterSection';
 import BusinessIntelligencePage from './pages/BusinessIntelligencePage';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
       <NewsletterSection />
       <Footer />
       <FloatingChat />
+      <ScrollToTop />
     </div>
   );
 }
