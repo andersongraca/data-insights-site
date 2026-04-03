@@ -4,15 +4,18 @@ import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
 import SolutionsDropdown from './SolutionsDropdown';
 
+
 interface NavbarProps {
   onNavigateToSaaS?: () => void;
   onNavigateToTeam?: () => void;
   onNavigateToSolutions?: () => void;
+  onNavigateToConsulting?: () => void;
 }
 
-const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: NavbarProps) => {
+const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onNavigateToConsulting }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
 
   const toggleLanguage = () => {
@@ -57,6 +60,24 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
             >
               Recursos
             </button>
+
+            {/* Services Dropdown */}
+            <div className="relative group">
+              <button
+                className="text-gray-700 hover:text-green-600 font-medium transition-colors flex items-center gap-1"
+              >
+                Serviços
+                <ChevronDown className="h-4 w-4" />
+              </button>
+              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2">
+                <button
+                  onClick={() => onNavigateToConsulting?.()}
+                  className="w-full text-left px-4 py-2 text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors"
+                >
+                  Consultoria Informática
+                </button>
+              </div>
+            </div>
 
             {/* Solutions Dropdown */}
             <SolutionsDropdown onNavigateToTeam={onNavigateToTeam} />
@@ -123,6 +144,31 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions }: N
               >
                 Recursos
               </button>
+
+              {/* Mobile Services Dropdown */}
+              <div className="px-2">
+                <button
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2 flex items-center gap-1 w-full"
+                >
+                  Serviços
+                  <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isServicesOpen && (
+                  <div className="bg-gray-50 rounded-lg mt-2 py-2">
+                    <button
+                      onClick={() => {
+                        onNavigateToConsulting?.();
+                        setIsOpen(false);
+                        setIsServicesOpen(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-green-100 hover:text-green-600 transition-colors"
+                    >
+                      Consultoria Informática
+                    </button>
+                  </div>
+                )}
+              </div>
 
               {/* Mobile Solutions Dropdown */}
               <div className="px-2">
