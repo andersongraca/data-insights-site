@@ -32,6 +32,7 @@ function App() {
   }
 
   if (currentPage === 'team') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     return (
       <div className="min-h-screen">
         <OurTeam onBack={() => setCurrentPage('home')} />
@@ -48,6 +49,7 @@ function App() {
   }
 
   if (currentPage === 'about') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     return (
       <div className="min-h-screen">
         <AboutUs onBack={() => setCurrentPage('home')} />
