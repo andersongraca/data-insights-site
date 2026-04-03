@@ -3,7 +3,12 @@ import { Award, GraduationCap, Briefcase } from 'lucide-react';
 import logo from '../assets/logo-Photoroom.png';
 import founderPhoto from '../assets/Captusdrar.JPG';
 
-const Footer = () => {
+interface FooterProps {
+  onNavigateToTeam?: () => void;
+  onNavigateToAbout?: () => void;
+}
+
+const Footer = ({ onNavigateToTeam, onNavigateToAbout }: FooterProps) => {
   const { t } = useTranslation();
 
   const scrollToSection = (sectionId: string) => {
@@ -41,10 +46,18 @@ const Footer = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => scrollToSection('about')}
+                    onClick={onNavigateToTeam}
                     className="text-gray-400 hover:text-green-400 transition-colors"
                   >
-                    Nosso Time
+                    Nossa Equipe
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={onNavigateToAbout}
+                    className="text-gray-400 hover:text-green-400 transition-colors"
+                  >
+                    Sobre Nós
                   </button>
                 </li>
                 <li>

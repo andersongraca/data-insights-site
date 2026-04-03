@@ -31,13 +31,13 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
 
   const teamMembers = [
     {
-      name: 'Anderson Graça',
+      name: 'M.Sc. Anderson Graça',
       role: 'Fundador & CEO',
-      credentials: 'Sistemas de Informação, Mestre em Computação Inteligente, MBA em Data Science & Analytics',
+      credentials: 'Sistemas de Informação, M.Sc. em Computação Inteligente, MBA em Data Science & Analytics',
       bio: 'Especialista em Data Science e Analytics com MBA em Data Science, liderando soluções de BI e ITIL',
       image: founderPhoto,
       achievements: [
-        'Master\'s in Intelligent Computing',
+        'M.Sc. in Intelligent Computing',
         'MBA in Data Science & Analytics',
         'ITIL Certified',
         '15+ anos em Data Science'
@@ -47,16 +47,16 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
       linkedin: 'https://www.linkedin.com/in/anderson-graça'
     },
     {
-      name: 'Márcio Alves',
+      name: 'M.Sc. Márcio Alves',
       role: 'Diretor Técnico & Desenvolvedor Sênior',
-      credentials: 'Sistemas de Informação',
+      credentials: 'M.Sc. em Ciências da Computação, MBA em Engenharia de Software',
       bio: 'Desenvolvedor frontend em ReactJS, backend em NodeJS e PostgreSQL, especialista em desenvolvimento ágil',
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663030970552/Gw6uUZWcNmjX2i4eQyxQ43/marcio-alves-avatar-E5i9akmRhihhcuzANW9AjV.webp',
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663030970552/Gw6uUZWcNmjX2i4eQyxQ43/marcio-alves_a366934b.png',
       achievements: [
+        'M.Sc. in Computer Science',
+        'MBA in Software Engineering',
         'ReactJS & Frontend Specialist',
-        'NodeJS & Backend Expert',
-        'PostgreSQL Database Design',
-        'Agile Development Methodology'
+        'NodeJS & Backend Expert'
       ],
       color: 'from-orange-500 to-orange-600',
       skills: ['ReactJS', 'NodeJS', 'PostgreSQL'],

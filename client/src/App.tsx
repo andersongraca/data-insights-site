@@ -14,13 +14,14 @@ import FloatingChat from './components/FloatingChat';
 import SaaSSolutions from './pages/SaaSSolutions';
 import PlatformOverviewSection from './components/PlatformOverviewSection';
 import OurTeam from './pages/OurTeam';
+import AboutUs from './pages/AboutUs';
 import NewsletterSection from './components/NewsletterSection';
 import BusinessIntelligencePage from './pages/BusinessIntelligencePage';
 import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'bi'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'bi' | 'about'>('home');
 
   if (currentPage === 'saas') {
     return (
@@ -46,6 +47,14 @@ function App() {
     );
   }
 
+  if (currentPage === 'about') {
+    return (
+      <div className="min-h-screen">
+        <AboutUs onBack={() => setCurrentPage('home')} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} />
@@ -56,7 +65,7 @@ function App() {
       <ResourcesSection />
       <ContactSection />
       <NewsletterSection />
-      <Footer />
+      <Footer onNavigateToTeam={() => setCurrentPage('team')} onNavigateToAbout={() => setCurrentPage('about')} />
       <FloatingChat />
       <ScrollToTop />
     </div>
