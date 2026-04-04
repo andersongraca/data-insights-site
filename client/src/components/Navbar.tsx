@@ -10,9 +10,10 @@ interface NavbarProps {
   onNavigateToTeam?: () => void;
   onNavigateToSolutions?: () => void;
   onNavigateToConsulting?: () => void;
+  onNavigateToBlog?: () => void;
 }
 
-const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onNavigateToConsulting }: NavbarProps) => {
+const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onNavigateToConsulting, onNavigateToBlog }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -59,6 +60,12 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onN
               className="text-gray-700 hover:text-green-600 font-medium transition-colors"
             >
               Recursos
+            </button>
+            <button
+              onClick={() => onNavigateToBlog?.()}
+              className="text-gray-700 hover:text-green-600 font-medium transition-colors"
+            >
+              Blog
             </button>
 
             {/* Services Dropdown */}
@@ -143,6 +150,15 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onN
                 className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2"
               >
                 Recursos
+              </button>
+              <button
+                onClick={() => {
+                  onNavigateToBlog?.();
+                  setIsOpen(false);
+                }}
+                className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2"
+              >
+                Blog
               </button>
 
               {/* Mobile Services Dropdown */}

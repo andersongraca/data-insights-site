@@ -18,11 +18,12 @@ import AboutUs from './pages/AboutUs';
 import NewsletterSection from './components/NewsletterSection';
 import BusinessIntelligencePage from './pages/BusinessIntelligencePage';
 import ConsultingServices from './pages/ConsultingServices';
+import Blog from './pages/Blog';
 import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'bi' | 'about' | 'consulting'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'bi' | 'about' | 'consulting' | 'blog'>('home');
 
   if (currentPage === 'saas') {
     return (
@@ -67,9 +68,18 @@ function App() {
     );
   }
 
+  if (currentPage === 'blog') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return (
+      <div className="min-h-screen">
+        <Blog onBack={() => setCurrentPage('home')} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
-      <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToConsulting={() => setCurrentPage('consulting')} />
+      <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToConsulting={() => setCurrentPage('consulting')} onNavigateToBlog={() => setCurrentPage('blog')} />
       <HeroSection />
       <StrategicLeadersSection />
       <SolutionsSection onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToBI={() => setCurrentPage('bi')} />
