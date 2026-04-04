@@ -11,9 +11,10 @@ interface NavbarProps {
   onNavigateToSolutions?: () => void;
   onNavigateToConsulting?: () => void;
   onNavigateToBlog?: () => void;
+  onNavigateToSchedule?: () => void;
 }
 
-const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onNavigateToConsulting, onNavigateToBlog }: NavbarProps) => {
+const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onNavigateToConsulting, onNavigateToBlog, onNavigateToSchedule }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -103,6 +104,14 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onN
             >
               <Globe className="h-4 w-4" />
               {i18n.language === 'en' ? 'PT' : 'EN'}
+            </button>
+
+            {/* Agendar Demo Button */}
+            <button
+              onClick={() => onNavigateToSchedule?.()}
+              className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-white font-medium px-6 py-2 rounded-lg transition-colors"
+            >
+              Agendar Demo
             </button>
 
             {/* CTA Button */}
@@ -198,6 +207,15 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onN
                 className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2"
               >
                 {t('nav.contact')}
+              </button>
+              <button
+                onClick={() => {
+                  onNavigateToSchedule?.();
+                  setIsOpen(false);
+                }}
+                className="bg-gradient-to-r from-cyan-500 to-green-500 hover:from-cyan-600 hover:to-green-600 text-white font-medium px-4 py-2 rounded-lg transition-colors w-full"
+              >
+                Agendar Demo
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
