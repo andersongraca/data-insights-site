@@ -33,7 +33,7 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
     {
       name: 'M.Sc. Anderson Graça',
       role: 'Fundador & CEO',
-      credentials: 'Sistemas de Informação, M.Sc. em Computação Inteligente, MBA em Data Science & Analytics',
+      credentials: 'M.Sc. em Computação Inteligente, MBA em Data Science & Analytics',
       bio: 'Especialista em Data Science e Analytics com MBA em Data Science, liderando soluções de BI e ITIL',
       image: founderPhoto,
       achievements: [
