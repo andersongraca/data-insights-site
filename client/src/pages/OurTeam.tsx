@@ -115,13 +115,22 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
                   <div className="p-8 md:p-10 h-full flex flex-col">
                     {/* Photo */}
                     <div className="flex justify-center mb-8">
-                      <div className="relative">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${member.color} rounded-2xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-300`}></div>
+                      <div className="relative group/photo">
+                        {/* Animated background glow */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${member.color} rounded-2xl blur-2xl opacity-40 group-hover/photo:opacity-80 transition-opacity duration-500`}></div>
+                        
+                        {/* Rotating border effect */}
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover/photo:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+                        
+                        {/* Main image with multiple hover effects */}
                         <img
                           src={member.image}
                           alt={member.name}
-                          className="relative rounded-2xl shadow-2xl w-64 h-64 object-cover border-2 border-white/30 group-hover:scale-105 transition-transform duration-300"
+                          className="relative rounded-2xl shadow-2xl w-64 h-64 object-cover border-2 border-white/30 group-hover/photo:border-white/60 group-hover/photo:scale-110 group-hover/photo:shadow-2xl transition-all duration-500 group-hover/photo:brightness-110"
                         />
+                        
+                        {/* Overlay effect on hover */}
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover/photo:opacity-100 transition-opacity duration-500"></div>
                       </div>
                     </div>
 
