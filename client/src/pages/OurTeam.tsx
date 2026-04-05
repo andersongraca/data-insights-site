@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FloatingChat from '../components/FloatingChat';
-import founderPhoto from '../assets/Captusdrar.JPG';
 import ScrollToTop from '../components/ScrollToTop';
 
 interface OurTeamProps {
@@ -35,7 +34,7 @@ const OurTeam = ({ onBack }: OurTeamProps) => {
       role: 'Fundador & CEO',
       credentials: 'M.Sc. em Computação Inteligente, MBA em Data Science & Analytics',
       bio: 'Especialista em Data Science e Analytics com MBA em Data Science, liderando soluções de BI e ITIL',
-      image: founderPhoto,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663030970552/Gw6uUZWcNmjX2i4eQyxQ43/Gemini_Generated_Image__ffe8f30e.png',
       achievements: [
         'M.Sc. in Intelligent Computing',
         'MBA in Data Science & Analytics',
