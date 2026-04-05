@@ -89,7 +89,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <Navbar onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToConsulting={() => setCurrentPage('consulting')} onNavigateToBlog={() => setCurrentPage('blog')} onNavigateToSchedule={() => setCurrentPage('schedule')} />
+      <Navbar onNavigateToHome={() => setCurrentPage('home')} onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToConsulting={() => setCurrentPage('consulting')} onNavigateToBlog={() => setCurrentPage('blog')} onNavigateToSchedule={() => setCurrentPage('schedule')} />
       <HeroSection />
       <StrategicLeadersSection />
       <SolutionsSection onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToBI={() => setCurrentPage('bi')} />
@@ -97,7 +97,7 @@ function App() {
       <ResourcesSection />
       <ContactSection />
       <NewsletterSection />
-      <Footer onNavigateToTeam={() => setCurrentPage('team')} onNavigateToAbout={() => setCurrentPage('about')} />
+      <Footer onNavigateToHome={() => setCurrentPage('home')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToAbout={() => setCurrentPage('about')} />
       <FloatingChat />
       <ScrollToTop />
     </div>

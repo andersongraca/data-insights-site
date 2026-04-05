@@ -4,11 +4,12 @@ import logo from '../assets/logo-Photoroom.png';
 import founderPhoto from '../assets/Captusdrar.JPG';
 
 interface FooterProps {
+  onNavigateToHome?: () => void;
   onNavigateToTeam?: () => void;
   onNavigateToAbout?: () => void;
 }
 
-const Footer = ({ onNavigateToTeam, onNavigateToAbout }: FooterProps) => {
+const Footer = ({ onNavigateToHome, onNavigateToTeam, onNavigateToAbout }: FooterProps) => {
   const { t } = useTranslation();
 
   const scrollToSection = (sectionId: string) => {
@@ -38,7 +39,7 @@ const Footer = ({ onNavigateToTeam, onNavigateToAbout }: FooterProps) => {
               <ul className="space-y-2">
                 <li>
                   <button
-                    onClick={() => scrollToSection('home')}
+                    onClick={() => onNavigateToHome?.()}
                     className="text-gray-400 hover:text-green-400 transition-colors"
                   >
                     {t('nav.home')}

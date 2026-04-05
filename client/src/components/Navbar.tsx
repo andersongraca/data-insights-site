@@ -6,6 +6,7 @@ import SolutionsDropdown from './SolutionsDropdown';
 
 
 interface NavbarProps {
+  onNavigateToHome?: () => void;
   onNavigateToSaaS?: () => void;
   onNavigateToTeam?: () => void;
   onNavigateToSolutions?: () => void;
@@ -14,7 +15,7 @@ interface NavbarProps {
   onNavigateToSchedule?: () => void;
 }
 
-const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onNavigateToConsulting, onNavigateToBlog, onNavigateToSchedule }: NavbarProps) => {
+const Navbar = ({ onNavigateToHome, onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onNavigateToConsulting, onNavigateToBlog, onNavigateToSchedule }: NavbarProps) => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -44,14 +45,14 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onN
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 cursor-pointer" onClick={() => scrollToSection('home')}>
+          <div className="flex-shrink-0 cursor-pointer" onClick={() => onNavigateToHome?.()}>
             <img src={logo} alt="Data Insights Logo" className="h-12 w-auto" />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6 ml-8">
             <button
-              onClick={() => scrollToSection('home')}
+              onClick={() => onNavigateToHome?.()}
               className="text-gray-700 hover:text-green-600 font-medium transition-colors"
             >
               {t('nav.home')}
@@ -146,7 +147,10 @@ const Navbar = ({ onNavigateToSaaS, onNavigateToTeam, onNavigateToSolutions, onN
           <div className="md:hidden pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-3 pt-4">
               <button
-                onClick={() => scrollToSection('home')}
+                onClick={() => {
+                  onNavigateToHome?.();
+                  setIsOpen(false);
+                }}
                 className="text-gray-700 hover:text-green-600 font-medium text-left px-2 py-2"
               >
                 {t('nav.home')}
