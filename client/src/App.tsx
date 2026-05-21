@@ -20,11 +20,12 @@ import BusinessIntelligencePage from './pages/BusinessIntelligencePage';
 import ConsultingServices from './pages/ConsultingServices';
 import Blog from './pages/Blog';
 import ScheduleDemo from './pages/ScheduleDemo';
+import NexoVendaSFA from './pages/NexoVendaSFA';
 import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'bi' | 'about' | 'consulting' | 'blog' | 'schedule'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'saas' | 'team' | 'bi' | 'about' | 'consulting' | 'blog' | 'schedule' | 'nexovenda'>('home');
 
   if (currentPage === 'saas') {
     return (
@@ -87,6 +88,15 @@ function App() {
     );
   }
 
+  if (currentPage === 'nexovenda') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return (
+      <div className="min-h-screen">
+        <NexoVendaSFA onBack={() => setCurrentPage('home')} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar onNavigateToHome={() => setCurrentPage('home')} onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToConsulting={() => setCurrentPage('consulting')} onNavigateToBlog={() => setCurrentPage('blog')} onNavigateToSchedule={() => setCurrentPage('schedule')} />
@@ -94,7 +104,7 @@ function App() {
       <StrategicLeadersSection />
       <SolutionsSection onNavigateToSaaS={() => setCurrentPage('saas')} onNavigateToBI={() => setCurrentPage('bi')} />
       <PlatformOverviewSection />
-      <ResourcesSection />
+      <ResourcesSection onNavigateToNexoVenda={() => setCurrentPage('nexovenda')} />
       <ContactSection />
       <NewsletterSection />
       <Footer onNavigateToHome={() => setCurrentPage('home')} onNavigateToTeam={() => setCurrentPage('team')} onNavigateToAbout={() => setCurrentPage('about')} />

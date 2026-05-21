@@ -2,12 +2,18 @@ import { useTranslation } from 'react-i18next';
 import { Factory, Shirt, Truck, Package, ShoppingCart, Briefcase, TrendingUp, BarChart3, Zap, ArrowRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
-const ResourcesSection = () => {
+interface ResourcesSectionProps {
+  onNavigateToNexoVenda?: () => void;
+}
+
+const ResourcesSection = ({ onNavigateToNexoVenda }: ResourcesSectionProps) => {
   const { t } = useTranslation();
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const sectors = [
+  const sectors: any[] = [];
+  
+  const allSolutions = [
     {
       id: 1,
       title: 'Indústria',
@@ -66,9 +72,22 @@ const ResourcesSection = () => {
       color: 'from-indigo-500 to-indigo-600',
       bgGradient: 'from-indigo-500/20 to-indigo-600/20',
       benefits: ['Alocação de recursos', 'Análise de performance', 'Satisfação do cliente'],
-      stats: '48% melhoria em produtividade'
+    stats: '48% melhoria em produtividade'
+  },
+    {
+      id: 7,
+      title: 'NexoVenda SFA',
+      description: 'Automação de Força de Vendas puro para Portugal. Integração nativa com ERPs portugueses, operação offline robusta e inteligência transacional.',
+      icon: TrendingUp,
+      color: 'from-blue-600 to-blue-800',
+      bgGradient: 'from-blue-600/20 to-blue-800/20',
+      benefits: ['Integração ERP', 'Operação Offline', 'Faturação Conformidade AT'],
+      stats: 'SFA Puro para Portugal',
+      isNexoVenda: true
     }
   ];
+  
+  const sectors = allSolutions;
 
   useEffect(() => {
     const observerOptions = {
@@ -181,7 +200,10 @@ const ResourcesSection = () => {
                   </div>
 
                   {/* CTA Button - Sempre no final */}
-                  <button className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r ${sector.color} text-white hover:shadow-lg hover:shadow-current/50 group inline-flex items-center justify-center gap-2 mt-auto`}>
+                  <button 
+                    onClick={() => sector.isNexoVenda && onNavigateToNexoVenda?.()}
+                    className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 bg-gradient-to-r ${sector.color} text-white hover:shadow-lg hover:shadow-current/50 group inline-flex items-center justify-center gap-2 mt-auto`}
+                  >
                     Saiba Mais
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
