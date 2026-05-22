@@ -11,8 +11,6 @@ const ResourcesSection = ({ onNavigateToNexoVenda }: ResourcesSectionProps) => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const sectors: any[] = [];
-  
   const allSolutions = [
     {
       id: 1,
